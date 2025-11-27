@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AuraNova | Creator Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AuraNova – content creator portfolio. Videos, social stats, collaborations, and contact for brand deals." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #020817;
+      --bg-alt: #020b23;
+      --accent: #38bdf8;
+      --accent-2: #22c55e;
+      --accent-soft: rgba(56, 189, 248, 0.16);
+      --text: #f9fafb;
+      --muted: #9ca3af;
+      --border: rgba(148, 163, 184, 0.4);
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.95);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      background:
+        radial-gradient(circle at top left, #0f172a 0, transparent 40%),
+        radial-gradient(circle at bottom right, #082f49 0, transparent 45%),
+        #020617;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 22px 16px 70px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 26px 18px 90px;
+      }
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 0 12px;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.97), transparent);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      background:
+        conic-gradient(from 210deg, #38bdf8, #22c55e, #6366f1, #38bdf8);
+      padding: 2px;
+      box-shadow: 0 16px 32px rgba(8, 47, 73, 0.9);
+    }
+
+    .brand-logo-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #020617, #020617 60%, #020617);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 20px;
+      color: var(--accent);
+    }
+
+    .brand-text-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background 0.16s ease, color 0.16s ease, transform 0.1s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      background: var(--accent-soft);
+      border: 1px solid rgba(56, 189, 248, 0.7);
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      margin-top: 22px;
+      margin-bottom: 46px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 34px;
+        margin-bottom: 56px;
+      }
+    }
+
+    .hero-left {
+      max-width: 560px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 12px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.8);
+      background: rgba(3, 7, 18, 0.96);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-pill {
+      padding: 2px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(75, 85, 99, 0.9);
+      background: rgba(15, 23, 42, 0.98);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 5vw, 40px);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-highlight {
+      background: linear-gradient(120deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .hero-sub strong {
+      color: #e5e7eb;
+    }
+
+    .hero-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+
+    .metric-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      background: rgba(15, 23, 42, 0.98);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 110px;
+    }
+
+    .metric-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .metric-value {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 8px 15px;
+      border: 1px solid transparent;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 10% 0, #38bdf8, #0f766e 70%);
+      color: #f9fafb;
+      box-shadow: 0 14px 30px rgba(8, 47, 73, 0.9);
+      border-color: rgba(56, 189, 248, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(8, 47, 73, 1);
+    }
+
+    .btn-outline {
+      background: rgba(15, 23, 42, 0.96);
+      color: var(--muted);
+      border-color: rgba(75, 85, 99, 0.9);
+    }
+
+    .btn-outline:hover {
+      color: var(--text);
+      border-color: rgba(148, 163, 184, 1);
+      transform: translateY(-1px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .hero-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      color: var(--accent);
+    }
+
+    /* hero right card */
+    .hero-right {
+      flex: 1;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 60%),
+        linear-gradient(150deg, #020617, #020b23);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 14px;
+    }
+
+    .hero-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-card-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.96);
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-video {
+      border-radius: 16px;
+      background: radial-gradient(circle at top, #0ea5e9, #020617 65%);
+      padding: 12px;
+      margin-bottom: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .video-thumb {
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0f172a, #020617);
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .play-circle {
+      width: 56px;
+      height: 56px;
+      border-radius: 999px;
+      border: 2px solid rgba(248, 250, 252, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .video-label {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      font-size: 11px;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+    }
+
+    .hero-video-meta {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-video-meta span:last-child {
+      color: var(--accent-2);
+    }
+
+    .hero-card-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 11px;
+    }
+
+    .social-pill {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 42px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* Featured content */
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .content-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .content-card {
+      border-radius: var(--radius-md);
+      background: rgba(3, 7, 18, 0.96);
+      border: 1px solid rgba(55, 65, 81, 0.95);
+      padding: 10px 10px 9px;
+      font-size: 12px;
+    }
+
+    .thumb-box {
+      border-radius: 10px;
+      background: linear-gradient(135deg, #020617, #082f49);
+      height: 110px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .thumb-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 9px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.7);
+    }
+
+    .thumb-text {
+      font-size: 12px;
+      text-align: center;
+      color: #e5e7eb;
+    }
+
+    .content-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .content-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .content-link {
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    /* Services / Collabs */
+    .service-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .service-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .service-card {
+      border-radius: var(--radius-md);
+      background: linear-gradient(140deg, #020617, #020b23);
+      border: 1px solid rgba(148, 163, 184, 0.8);
+      padding: 12px 11px 10px;
+      font-size: 12px;
+    }
+
+    .service-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    .service-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .service-tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.75);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    /* Contact */
+    .contact-card {
+      border-radius: var(--radius-md);
+      background: linear-gradient(150deg, #020617, #020b23);
+      border: 1px solid rgba(148, 163, 184, 0.85);
+      padding: 16px 14px 12px;
+      font-size: 13px;
+      display: grid;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-card {
+        grid-template-columns: 1.1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .contact-text {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-details {
+      font-size: 12px;
+    }
+
+    .contact-details a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .contact-notes {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .contact-right-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .contact-list {
+      font-size: 12px;
+      list-style: none;
+    }
+
+    .contact-list li {
+      margin-bottom: 3px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+      font-size: 11px;
+    }
+
+    .social-chip {
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15, 23, 42, 0.96);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 30px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(30, 64, 175, 0.75);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-logo">
+          <div class="brand-logo-inner">A</div>
+        </div>
+        <div>
+          <div class="brand-text-title">AURANOVA</div>
+          <div class="brand-text-sub">Content Creator · Video · Live</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#content">Content</a>
+        <a href="#services">Collabs</a>
+        <a href="#contact" class="nav-cta">Work together</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-dot"></div>
+          New video every week · <span class="hero-pill">Gaming · Tech · Lifestyle</span>
+        </div>
+        <h1 class="hero-title">
+          <span class="hero-highlight">AuraNova</span>
+          <span>Creator & Storyteller</span>
+        </h1>
+        <p class="hero-sub">
+          <strong>Short-form and long-form content across YouTube, Instagram, and TikTok.</strong>
+          From gaming highlights and tech breakdowns to day-in-the-life vlogs, I create fast-paced,
+          story-driven content built to keep people watching.
+        </p>
+
+        <div class="hero-metrics">
+          <div class="metric-pill">
+            <span class="metric-label">YouTube</span>
+            <span class="metric-value">120k+ subs</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-label">Monthly views</span>
+            <span class="metric-value">1.8M+</span>
+          </div>
+          <div class="metric-pill">
+            <span class="metric-label">Brands</span>
+            <span class="metric-value">15+ collabs</span>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">Watch channel trailer →</a>
+          <a href="#contact" class="btn btn-outline">Request media kit</a>
+        </div>
+        <p class="hero-meta">
+          Available for <span>brand deals, sponsorships, UGC content, and event coverage.</span>
+        </p>
+      </div>
+
+      <!-- Hero card right -->
+      <div class="hero-right">
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span>Featured video</span>
+            <span class="hero-card-pill">YouTube · 12 min</span>
+          </div>
+          <div class="hero-video">
+            <div class="video-thumb">
+              <div class="play-circle">▶</div>
+              <div class="video-label">“I tried your insane setup ideas”</div>
+            </div>
+            <div class="hero-video-meta">
+              <span>432k+ views · 2 weeks ago</span>
+              <span>Open on YouTube →</span>
+            </div>
+            <div class="hero-card-links">
+              <a href="#" class="social-pill">YouTube</a>
+              <a href="#" class="social-pill">Instagram Reels</a>
+              <a href="#" class="social-pill">TikTok</a>
+              <a href="#" class="social-pill">Twitch</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED CONTENT -->
+    <section id="content">
+      <h2 class="section-heading">Selected Content</h2>
+      <p class="section-sub">
+        A snapshot of the type of videos I create – from cinematic edits to fast-paced commentary.
+      </p>
+
+      <div class="content-grid">
+        <!-- Card 1 -->
+        <article class="content-card">
+          <div class="thumb-box">
+            <span class="thumb-tag">Long-form</span>
+            <div class="thumb-text">“24 hours in ultra-hard mode”</div>
+          </div>
+          <div class="content-title">Gaming Challenge Video</div>
+          <div class="content-meta">Story-driven gameplay, custom overlays, and live commentary.</div>
+          <a href="#" class="content-link">Watch on YouTube →</a>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="content-card">
+          <div class="thumb-box">
+            <span class="thumb-tag">Shorts</span>
+            <div class="thumb-text">“POV: your squad actually listens”</div>
+          </div>
+          <div class="content-title">Vertical Clips / Reels</div>
+          <div class="content-meta">Short-form edits optimized for Reels, TikTok, and Shorts.</div>
+          <a href="#" class="content-link">View playlist →</a>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="content-card">
+          <div class="thumb-box">
+            <span class="thumb-tag">Collab</span>
+            <div class="thumb-text">Sponsored PC setup makeover</div>
+          </div>
+          <div class="content-title">Brand Integration</div>
+          <div class="content-meta">Natural product integration inside a story-focused video.</div>
+          <a href="#" class="content-link">See case study →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- SERVICES / COLLABS -->
+    <section id="services">
+      <h2 class="section-heading">How We Can Work Together</h2>
+      <p class="section-sub">
+        Every collaboration is tailored, but here are the most common ways I work with brands and teams.
+      </p>
+
+      <div class="service-grid">
+        <!-- Service 1 -->
+        <article class="service-card">
+          <div class="service-title">Integrated Sponsorships</div>
+          <p class="service-text">
+            Seamless brand moments inside my regular content – from sponsored intros to full segment integrations.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">YouTube videos</span>
+            <span class="service-tag">Call-to-action overlays</span>
+            <span class="service-tag">Custom talking points</span>
+          </div>
+        </article>
+
+        <!-- Service 2 -->
+        <article class="service-card">
+          <div class="service-title">UGC & Custom Content</div>
+          <p class="service-text">
+            Creator-style videos shot for your brand channels – vertical or horizontal, ready to post.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">Product demos</span>
+            <span class="service-tag">Tutorials</span>
+            <span class="service-tag">Lifestyle shots</span>
+          </div>
+        </article>
+
+        <!-- Service 3 -->
+        <article class="service-card">
+          <div class="service-title">Event & Live Coverage</div>
+          <p class="service-text">
+            Streams, recap videos, and behind-the-scenes content from events, launches, or tournaments.
+          </p>
+          <div class="service-tags">
+            <span class="service-tag">Live streams</span>
+            <span class="service-tag">Highlight edits</span>
+            <span class="service-tag">Social cutdowns</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-heading">Collabs & Contact</h2>
+      <p class="section-sub">
+        Tell me a bit about your brand and the type of content you’d like to create. I usually reply within 24 hours.
+      </p>
+
+      <div class="contact-card">
+        <div>
+          <p class="contact-text">
+            For brand deals, sponsorships, UGC, or events:
+          </p>
+          <div class="contact-details">
+            Email: <a href="mailto:hello@auranovacreator.com">hello@auranovacreator.com</a><br />
+            Business WhatsApp: <strong>+91-90000-00000</strong>
+          </div>
+          <p class="contact-notes">
+            Please include campaign goals, rough timeline, and preferred platforms (YouTube, Instagram, TikTok, etc.).
+          </p>
+          <div class="social-row">
+            <a href="#" class="social-chip">YouTube</a>
+            <a href="#" class="social-chip">Instagram</a>
+            <a href="#" class="social-chip">TikTok</a>
+            <a href="#" class="social-chip">Twitch</a>
+          </div>
+        </div>
+        <div>
+          <div class="contact-right-title">Helpful details to share:</div>
+          <ul class="contact-list">
+            <li>• Brand / product name</li>
+            <li>• One-line description of what you do</li>
+            <li>• Type of deliverables (videos, shorts, posts)</li>
+            <li>• Budget range and deadline</li>
+            <li>• Any key messages or must-say points</li>
+          </ul>
+          <p class="contact-notes">
+            I’ll send over a simple concept, pricing, and next steps.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="year"></span> AuraNova. All rights reserved.</div>
+      <div class="footer-links">
+        <span>Site by Your Name</span>
+        <a href="#">Media kit (PDF)</a>
+        <a href="#">More examples</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

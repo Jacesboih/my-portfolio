@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Name | Web Designer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Your Name, a web designer and frontend developer." />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --card: #020617;
+      --border: rgba(148, 163, 184, 0.2);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #1e293b 0, #020617 40%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Layout */
+    .page {
+      min-height: 100vh;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 32px 16px 80px;
+      }
+    }
+
+    /* Top nav */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), transparent);
+      padding-block: 8px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 20%, #38bdf8, #1d4ed8 40%, #020617 85%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+      color: #f9fafb;
+      box-shadow: 0 12px 25px rgba(37, 99, 235, 0.6);
+    }
+
+    .brand-text-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: color 0.2s ease, background 0.2s ease, transform 0.12s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+      transform: translateY(-1px);
+    }
+
+    .nav-links a.nav-cta {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 12px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        grid-template-columns: 1.2fr 1fr;
+        margin-top: 32px;
+        margin-bottom: 56px;
+      }
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.8);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .badge-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(56, 189, 248, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .badge-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.9);
+    }
+
+    .badge-pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+    }
+
+    .hero-title {
+      font-size: clamp(32px, 5vw, 40px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: 0;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.12s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 10% 0%, #38bdf8, #1d4ed8 45%, #0f172a 100%);
+      color: white;
+      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.6);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.85);
+    }
+
+    .btn-ghost {
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(15, 23, 42, 1);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero-secondary {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-secondary span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Hero card on the right */
+    .hero-card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.06), transparent 55%),
+                  linear-gradient(150deg, rgba(15, 23, 42, 0.97), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: var(--shadow-soft);
+      padding: 18px 16px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-pill {
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .hero-preview {
+      border-radius: 14px;
+      background: linear-gradient(135deg, #020617, #020617);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .browser-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .browser-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+    }
+
+    .browser-line {
+      width: 62%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(51, 65, 85, 0.9);
+      margin-bottom: 12px;
+    }
+
+    .preview-main {
+      border-radius: 12px;
+      background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), rgba(15, 23, 42, 0.98));
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .preview-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .preview-text {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .preview-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .preview-tag {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .preview-avatar-wrap {
+      justify-self: center;
+    }
+
+    .preview-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      background: conic-gradient(from 220deg, #38bdf8, #22c55e, #6366f1, #38bdf8);
+      padding: 2px;
+      position: relative;
+    }
+
+    .preview-avatar-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 999px;
+      background: radial-gradient(circle at 30% 10%, #1f2937, #020617 65%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      font-weight: 600;
+      color: #e5e7eb;
+    }
+
+    .hero-card-badge {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      padding: 6px 9px;
+      font-size: 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.94);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-card-badge-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.8);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    /* Skills */
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.95);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: #e5e7eb;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 768px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .project-card {
+      border-radius: var(--radius-md);
+      background: linear-gradient(145deg, rgba(15, 23, 42, 0.96), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      padding: 14px 14px 12px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .project-title {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .project-type {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .project-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .project-tag {
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--accent);
+    }
+
+    .project-status {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(22, 163, 74, 0.16);
+      color: #4ade80;
+      border: 1px solid rgba(74, 222, 128, 0.45);
+    }
+
+    /* Contact */
+    .contact-card {
+      border-radius: var(--radius-md);
+      background: linear-gradient(150deg, rgba(15, 23, 42, 0.98), #020617);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      padding: 18px 16px 14px;
+      display: grid;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .contact-card {
+        grid-template-columns: 1.2fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .contact-text {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .contact-details {
+      font-size: 12px;
+    }
+
+    .contact-details a {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    .contact-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .social-pill {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      color: var(--text);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    /* Footer */
+    .footer {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(30, 41, 59, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Navigation -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-logo">JB</div>
+        <div>
+          <div class="brand-text-title">Jaces Boih</div>
+          <div class="brand-text-sub">Web Designer · Frontend Dev</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#contact" class="nav-cta">Let’s talk</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="badge">
+          <div class="badge-dot"></div>
+          Available for <span class="badge-pill">Freelance Web Design</span>
+        </div>
+
+        <h1 class="hero-title">
+          I design <span>clean, modern</span> websites that actually feel good to use.
+        </h1>
+        <p class="hero-sub">
+          I’m <strong>Your Name</strong>, a web designer & frontend developer who loves building smooth,
+          minimal interfaces with HTML, CSS, and a bit of magic.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#contact" class="btn btn-primary">
+            Let’s work together →
+          </a>
+          <a href="#projects" class="btn btn-ghost">
+            View selected projects
+          </a>
+        </div>
+
+        <p class="hero-secondary">
+          Currently crafting interfaces for <span>personal brands, creators, and small businesses.</span>
+        </p>
+      </div>
+
+      <!-- Hero right card -->
+      <aside class="hero-card">
+        <div class="hero-tag">
+          <span>Portfolio snapshot</span>
+          <span class="hero-pill">Live UI Preview</span>
+        </div>
+        <div class="hero-preview">
+          <div class="browser-dots">
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+            <div class="browser-dot"></div>
+          </div>
+          <div class="browser-line"></div>
+          <div class="preview-main">
+            <div>
+              <div class="preview-title">Minimal Portfolio Website</div>
+              <p class="preview-text">
+                Hero, projects, and contact on a single, clean page. Optimized for mobile and fast loading.
+              </p>
+              <div class="preview-tags">
+                <span class="preview-tag">HTML</span>
+                <span class="preview-tag">CSS</span>
+                <span class="preview-tag">Responsive</span>
+              </div>
+              <div class="preview-tags">
+                <span class="preview-tag">Smooth UI</span>
+                <span class="preview-tag">Dark mode</span>
+              </div>
+            </div>
+            <div class="preview-avatar-wrap">
+              <div class="preview-avatar">
+                <div class="preview-avatar-inner">JB</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-card-badge">
+          <span class="hero-card-badge-dot"></span>
+          <span>Designing experiences, not just screens.</span>
+        </div>
+      </aside>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-heading">About</h2>
+      <p class="section-sub">
+        I create simple, focused websites with a strong emphasis on typography, spacing, and small details
+        that make the whole experience feel smooth and intentional.
+      </p>
+      <div class="pill-row">
+        <span class="pill">Web Design & Layout</span>
+        <span class="pill">Responsive Frontend</span>
+        <span class="pill">Landing Pages</span>
+        <span class="pill">Portfolio Sites</span>
+        <span class="pill">Wordpress</span>
+        <span class="pill">Elementor</span>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2 class="section-heading">Selected Work</h2>
+      <p class="section-sub">
+        A few projects that represent the type of clean, modern interfaces I love to build.
+        You can replace these with your real links and screenshots.
+      </p>
+
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Creator Portfolio</h3>
+              <p class="project-type">Personal Brand Website</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            One-page portfolio for a content creator with smooth scrolling, bold typography, and
+            clear call-to-actions leading to social platforms.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">HTML</span>
+            <span class="project-tag">CSS Grid</span>
+            <span class="project-tag">Responsive</span>
+          </div>
+          <div class="project-footer">
+            <a href="creater-portfolio.html" class="project-link">
+              View live demo 1 →
+            </a>
+            <a href="creater-portfolio1.html" class="project-link">
+              View live demo 2 →
+            </a>
+            <span class="project-status">Featured</span>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Cafe Landing Page</h3>
+              <p class="project-type">Small Business</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            A minimal landing page for a local cafe with menu highlights, location block, and CTA
+            to order or book a table.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Flexbox</span>
+            <span class="project-tag">Scroll sections</span>
+            <span class="project-tag">Mobile-first</span>
+          </div>
+          <div class="project-footer">
+            <a href="cafe.html" class="project-link">
+              View live demo →
+            </a>
+            <span class="project-status">Client-ready</span>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Music Artist Page</h3>
+              <p class="project-type">Landing Page</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            Hero section with bold artist name, streaming links, latest releases, and a simple
+            tour / contact block.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Hero layout</span>
+            <span class="project-tag">Dark theme</span>
+            <span class="project-tag">Links hub</span>
+          </div>
+          <div class="project-footer">
+            <a href="artist.html" class="project-link">
+              View live demo →
+            </a>
+            <span class="project-status">Concept</span>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <h3 class="project-title">Minimal Blog Layout</h3>
+              <p class="project-type">UI Concept</p>
+            </div>
+          </div>
+          <p class="project-desc">
+            Clean blog UI focusing on readability and simple structure. Perfect base for a
+            personal tech or design blog.
+          </p>
+          <div class="project-tags">
+            <span class="project-tag">Typography</span>
+            <span class="project-tag">Content-focused</span>
+            <span class="project-tag">Clean UI</span>
+          </div>
+          <div class="project-footer">
+            <a href="blog.html" class="project-link">
+              View live demo →
+            </a>
+            <span class="project-status">Template</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2 class="section-heading">Let’s work together</h2>
+      <p class="section-sub">
+        Tell me about your idea — a new portfolio, a landing page, or a complete website redesign.
+        I usually reply within 24 hours.
+      </p>
+
+      <div class="contact-card">
+        <div>
+          <p class="contact-text">
+            Whether you’re a creator, small business, or just starting out,
+            I can help you turn your idea into a clear, focused website.
+          </p>
+          <div class="contact-details">
+            Email: <a href="mailto:youremail@example.com">jacesboih+web@gmail.com</a><br />
+            Location: Delhi, India
+          </div>
+          <p class="contact-meta">
+            Prefer social? You can also DM me:
+          </p>
+          <div class="social-row">
+            <a href="#" class="social-pill">Instagram</a>
+            <a href="#" class="social-pill">Twitter / X</a>
+            <a href="#" class="social-pill">Dribbble / Behance</a>
+            <a href="#" class="social-pill">GitHub</a>
+          </div>
+        </div>
+        <div>
+          <p class="contact-text">
+            Quick project info you can send:
+          </p>
+          <ul class="contact-details">
+            <li>• What type of website you need</li>
+            <li>• Any reference or inspiration links</li>
+            <li>• Your deadline & budget range</li>
+          </ul>
+          <p class="contact-meta">
+            From there, I’ll share a simple plan and timeline.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      © <span id="year"></span> Jaces Boih. Built with clean HTML & CSS.
+    </footer>
+  </div>
+
+  <script>
+    // Set current year automatically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

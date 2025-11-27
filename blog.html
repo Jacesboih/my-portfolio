@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Minimal Tech Blog | Clean Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A minimal, typography-focused blog layout for personal tech or design writing." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f4f4f5;
+      --bg-card: #ffffff;
+      --bg-muted: #f9fafb;
+      --accent: #111827;
+      --accent-soft: #e5e7eb;
+      --text: #020617;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* LAYOUT */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 26px 20px 80px;
+      }
+    }
+
+    /* HEADER / NAV */
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e7eb;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .brand-text-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    /* HERO / INTRO */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+      gap: 22px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .hero-main {
+      max-width: 620px;
+    }
+
+    .hero-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-title {
+      font-size: clamp(28px, 5vw, 34px);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta span {
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .hero-side {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .hero-side-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+
+    .hero-side-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-side-list {
+      list-style: none;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-side-list li {
+      margin-bottom: 2px;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .hero-pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    /* LAYOUT MAIN */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(0, 0.9fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .layout {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* FEATURED ARTICLE */
+    .featured {
+      background: var(--bg-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-soft);
+      padding: 16px 16px 14px;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: #f3f4f6;
+      color: #4b5563;
+      margin-bottom: 10px;
+    }
+
+    .featured-title {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 6px;
+    }
+
+    .featured-meta {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .featured-excerpt {
+      font-size: 14px;
+      color: #4b5563;
+      margin-bottom: 12px;
+    }
+
+    .featured-link {
+      font-size: 12px;
+      color: #111827;
+      font-weight: 500;
+    }
+
+    /* ARTICLE LIST */
+    .section-title {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin: 12px 0 8px;
+    }
+
+    .posts-list {
+      background: transparent;
+    }
+
+    .post-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px 16px;
+      padding: 10px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .post-item:last-child {
+      border-bottom: none;
+    }
+
+    .post-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .post-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .post-tag {
+      align-self: flex-start;
+      font-size: 10px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #f3f4f6;
+      color: #4b5563;
+    }
+
+    .post-excerpt {
+      grid-column: 1 / -1;
+      font-size: 12px;
+      color: #6b7280;
+      margin-top: 4px;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .sidebar-card {
+      background: var(--bg-card);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      padding: 14px 14px 12px;
+      font-size: 13px;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-text {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .sidebar-list {
+      list-style: none;
+      font-size: 12px;
+    }
+
+    .sidebar-list li {
+      padding: 4px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .sidebar-list li:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-list a {
+      color: #111827;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      background: #f9fafb;
+    }
+
+    .subtle-input {
+      width: 100%;
+      margin-top: 6px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid #e5e7eb;
+      font-size: 12px;
+      outline: none;
+      background: #f9fafb;
+    }
+
+    .subtle-input:focus {
+      border-color: #111827;
+      background: #ffffff;
+    }
+
+    .subtle-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 34px;
+      padding-top: 14px;
+      border-top: 1px solid #e5e7eb;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: #111827;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-logo">B</div>
+        <div>
+          <div class="brand-text-title">Blog Notes</div>
+          <div class="brand-text-sub">Thoughts on design & the web</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#articles">Articles</a>
+        <a href="#about">About</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+    </header>
+
+    <!-- HERO / INTRO -->
+    <section class="hero">
+      <div class="hero-main">
+        <div class="hero-tag">Personal blog</div>
+        <h1 class="hero-title">A minimal space for slow, focused writing about design and front-end.</h1>
+        <p class="hero-sub">
+          Short essays, practical notes, and tiny experiments. No clickbait, no growth hacks —
+          just readable posts you can finish in a coffee break.
+        </p>
+        <p class="hero-meta">
+          Written by <span>Your Name</span> · Web designer & front-end developer
+        </p>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-side-title">What you’ll find here</div>
+        <p class="hero-side-text">
+          Mostly around front-end, UI decisions, and small details that make websites feel nice.
+        </p>
+        <ul class="hero-side-list">
+          <li>• Layout and typography notes</li>
+          <li>• CSS patterns and components</li>
+          <li>• Small project breakdowns</li>
+        </ul>
+        <div class="hero-pill-row">
+          <span class="hero-pill">Typography</span>
+          <span class="hero-pill">Clean UI</span>
+          <span class="hero-pill">Content-first</span>
+        </div>
+      </aside>
+    </section>
+
+    <div class="layout">
+      <main>
+        <!-- FEATURED -->
+        <section id="articles" class="featured">
+          <span class="badge">Featured</span>
+          <h2 class="featured-title">Designing a homepage that doesn’t feel like a template</h2>
+          <p class="featured-meta">June 12, 2025 · 7 min read · Layout, UX</p>
+          <p class="featured-excerpt">
+            Most homepages look the same because they’re built from the same patterns. In this post,
+            I break down a simple way to make a familiar layout feel personal and intentional without
+            fighting against the grid.
+          </p>
+          <a href="#" class="featured-link">Read the full article →</a>
+        </section>
+
+        <!-- RECENT POSTS -->
+        <div class="section-title">Recent posts</div>
+        <section class="posts-list">
+          <!-- Post 1 -->
+          <article class="post-item">
+            <div>
+              <h3 class="post-title">
+                Small typographic tweaks that instantly improve readability
+              </h3>
+              <p class="post-meta">May 28, 2025 · 5 min read · Typography</p>
+            </div>
+            <div class="post-tag">Type</div>
+            <p class="post-excerpt">
+              Line height, max width, and subtle hierarchy do most of the work.
+              Here’s a quick checklist I use on almost every new page.
+            </p>
+          </article>
+
+          <!-- Post 2 -->
+          <article class="post-item">
+            <div>
+              <h3 class="post-title">
+                Building a calm color palette for dashboards
+              </h3>
+              <p class="post-meta">May 10, 2025 · 6 min read · UI Design</p>
+            </div>
+            <div class="post-tag">UI</div>
+            <p class="post-excerpt">
+              Why most dashboards feel busy — and how to dial the contrast down so data is readable
+              without feeling loud.
+            </p>
+          </article>
+
+          <!-- Post 3 -->
+          <article class="post-item">
+            <div>
+              <h3 class="post-title">
+                Layout patterns that work across desktop and mobile
+              </h3>
+              <p class="post-meta">April 21, 2025 · 8 min read · Front-end</p>
+            </div>
+            <div class="post-tag">CSS</div>
+            <p class="post-excerpt">
+              A few grid and flexbox patterns that almost always survive the jump from wide screens to phones.
+            </p>
+          </article>
+        </section>
+      </main>
+
+      <!-- SIDEBAR -->
+      <aside class="sidebar">
+        <!-- About -->
+        <div id="about" class="sidebar-card">
+          <div class="sidebar-title">About the author</div>
+          <p class="sidebar-text">
+            I’m Your Name, a web designer & front-end dev who likes simple layouts, quiet UIs,
+            and small, well-made websites.
+          </p>
+          <div class="pill-row">
+            <span class="pill">Web design</span>
+            <span class="pill">CSS</span>
+            <span class="pill">UI thinking</span>
+          </div>
+        </div>
+
+        <!-- Topics -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">Topics</div>
+          <ul class="sidebar-list">
+            <li><a href="#">Layout & spacing</a></li>
+            <li><a href="#">Typography basics</a></li>
+            <li><a href="#">CSS & front-end</a></li>
+            <li><a href="#">Case studies</a></li>
+          </ul>
+        </div>
+
+        <!-- Subscribe -->
+        <div id="subscribe" class="sidebar-card">
+          <div class="sidebar-title">Stay in the loop</div>
+          <p class="sidebar-text">
+            Get new posts in your inbox once in a while. No spam, no tracking — just links.
+          </p>
+          <input class="subtle-input" type="email" placeholder="you@example.com" />
+          <p class="subtle-note">Press enter to imagine a simple subscribe flow here.</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="year"></span> Your Name. Minimal blog layout concept.</div>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">Dribbble</a>
+        <a href="#">Portfolio</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

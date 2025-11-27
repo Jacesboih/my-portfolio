@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Brewside Café | Local Coffee & Bites</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A cozy local cafe serving specialty coffee, fresh pastries, and all-day breakfast." />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0b0b;
+      --bg-soft: #151515;
+      --bg-alt: #1f1a17;
+      --accent: #f4b36b;
+      --accent-soft: rgba(244, 179, 107, 0.15);
+      --text: #f9fafb;
+      --muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.08);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, sans-serif;
+      background: radial-gradient(circle at top, #292524 0, #09090b 45%, #020202 100%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 14px 60px;
+    }
+
+    @media (min-width: 768px) {
+      .page {
+        padding: 24px 18px 80px;
+      }
+    }
+
+    /* NAVBAR */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 0 12px;
+      backdrop-filter: blur(18px);
+      background: radial-gradient(circle at top, rgba(24, 24, 27, 0.96), transparent);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-logo {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: radial-gradient(circle at 30% 20%, #fed7aa, #92400e 60%, #171717 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+      color: #111827;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .brand-text-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand-text-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      transition: background 0.2s ease, color 0.2s ease, transform 0.1s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(24, 24, 27, 0.9);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      background: var(--accent-soft);
+      border: 1px solid rgba(244, 179, 107, 0.6);
+      color: var(--accent);
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+      margin-top: 18px;
+      margin-bottom: 40px;
+    }
+
+    @media (min-width: 900px) {
+      .hero {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 32px;
+        margin-bottom: 56px;
+      }
+    }
+
+    .hero-left {
+      max-width: 560px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px 4px 4px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(12, 12, 12, 0.92);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      background: rgba(52, 211, 153, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 12px rgba(34, 197, 94, 0.9);
+    }
+
+    .hero-pill {
+      padding: 2px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(24, 24, 27, 0.98);
+    }
+
+    .hero-title {
+      font-size: clamp(30px, 5vw, 40px);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      margin-bottom: 8px;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, #fed7aa, #facc15);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-sub strong {
+      color: #fef3c7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 9px 18px;
+      border: 0;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-primary {
+      background: radial-gradient(circle at 15% 0, #fed7aa, #b45309 60%);
+      color: #111827;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.8);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-ghost {
+      background: rgba(24, 24, 27, 0.9);
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(24, 24, 27, 1);
+      color: var(--text);
+      transform: translateY(-1px);
+    }
+
+    .hero-info {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-info span {
+      color: var(--accent);
+    }
+
+    /* HERO IMAGE / CARD */
+    .hero-card {
+      flex: 1;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at top, rgba(244, 179, 107, 0.12), transparent 55%),
+                  linear-gradient(150deg, #111827, #020617);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: var(--shadow-soft);
+      padding: 16px;
+      max-width: 420px;
+      margin-inline: auto;
+    }
+
+    .hero-card-inner {
+      border-radius: 16px;
+      background: linear-gradient(140deg, rgba(39, 39, 42, 0.95), #020617);
+      border: 1px solid rgba(120, 113, 108, 0.5);
+      overflow: hidden;
+    }
+
+    .hero-card-top {
+      padding: 10px 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(120, 113, 108, 0.4);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .hero-card-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(82, 82, 91, 0.9);
+    }
+
+    .hero-card-body {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+    }
+
+    .hero-img-placeholder {
+      height: 150px;
+      border-radius: 12px;
+      background-image: linear-gradient(135deg, #1c1917, #292524 50%, #0f766e 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px 12px;
+    }
+
+    .hero-img-text {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .hero-img-sub {
+      font-size: 11px;
+      color: #e5e7eb;
+    }
+
+    .hero-img-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: rgba(12, 10, 9, 0.9);
+      border: 1px solid rgba(244, 179, 107, 0.6);
+      color: var(--accent);
+    }
+
+    .hero-card-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .hero-badge-pill {
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(24, 24, 27, 0.95);
+      border: 1px solid rgba(82, 82, 91, 0.8);
+      font-size: 10px;
+    }
+
+    /* SECTIONS GENERAL */
+    section {
+      margin-bottom: 40px;
+    }
+
+    .section-heading {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .section-sub {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    /* MENU SECTION */
+    .menu-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .menu-grid {
+        flex-direction: row;
+        gap: 18px;
+      }
+    }
+
+    .menu-column {
+      flex: 1;
+      border-radius: var(--radius-md);
+      background: rgba(12, 12, 12, 0.95);
+      border: 1px solid var(--border);
+      padding: 12px 12px 10px;
+    }
+
+    .menu-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 12px;
+      padding-block: 6px;
+      border-bottom: 1px dashed rgba(39, 39, 42, 0.8);
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-item-name {
+      max-width: 70%;
+    }
+
+    .menu-item-name span {
+      display: block;
+    }
+
+    .menu-item-desc {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .menu-item-price {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-left: 6px;
+    }
+
+    /* HIGHLIGHT STRIP */
+    .strip {
+      margin-top: 12px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 11px;
+      background: rgba(24, 24, 27, 0.95);
+      border: 1px dashed rgba(161, 161, 170, 0.8);
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .strip span {
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    /* LOCATION + HOURS */
+    .info-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    @media (min-width: 768px) {
+      .info-grid {
+        flex-direction: row;
+      }
+    }
+
+    .info-card {
+      flex: 1;
+      border-radius: var(--radius-md);
+      background: rgba(12, 12, 12, 0.98);
+      border: 1px solid var(--border);
+      padding: 14px 12px;
+      font-size: 13px;
+    }
+
+    .info-card h3 {
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .info-muted {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .hours-list {
+      font-size: 12px;
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding-block: 3px;
+    }
+
+    .map-placeholder {
+      margin-top: 8px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #171717, #262626);
+      border: 1px dashed rgba(82, 82, 91, 0.9);
+      padding: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .map-placeholder span {
+      color: var(--accent);
+    }
+
+    /* CTA STRIP */
+    .cta-strip {
+      border-radius: var(--radius-md);
+      background: linear-gradient(120deg, #1b1917, #0b0b0b);
+      border: 1px solid rgba(244, 179, 107, 0.5);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+      margin-top: 18px;
+    }
+
+    @media (min-width: 640px) {
+      .cta-strip {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .cta-text-main {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .cta-text-sub {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    /* FOOTER */
+    .footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(39, 39, 42, 0.9);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    @media (min-width: 640px) {
+      .footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="brand">
+        <div class="brand-logo">B</div>
+        <div>
+          <div class="brand-text-title">Brewside Café</div>
+          <div class="brand-text-sub">Coffee · Bakes · All-day</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#location">Location</a>
+        <a href="#order" class="nav-cta">Order / Book</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-left">
+        <div class="hero-badge">
+          <div class="hero-dot"></div>
+          Open today · <span class="hero-pill">8:00 AM – 10:00 PM</span>
+        </div>
+        <h1 class="hero-title">
+          Your neighborhood <span>coffee spot</span> for slow mornings & late-night chats.
+        </h1>
+        <p class="hero-sub">
+          <strong>Brewside Café</strong> is a cozy corner serving specialty coffee, fresh pastries,
+          and simple all-day bites. Drop by for a quick espresso, stay for the warm lights and good music.
+        </p>
+        <div class="hero-actions">
+          <a href="#order" class="btn btn-primary">Order online →</a>
+          <a href="#location" class="btn btn-ghost">Book a table</a>
+        </div>
+        <p class="hero-info">
+          Located in <span>Your Area / City</span> · Dine-in · Takeaway · Delivery
+        </p>
+      </div>
+
+      <!-- HERO CARD / IMAGE -->
+      <aside class="hero-card">
+        <div class="hero-card-inner">
+          <div class="hero-card-top">
+            <div class="hero-card-dots">
+              <div class="hero-card-dot"></div>
+              <div class="hero-card-dot"></div>
+              <div class="hero-card-dot"></div>
+            </div>
+            <span>Inside Brewside</span>
+          </div>
+          <div class="hero-card-body">
+            <div class="hero-img-placeholder">
+              <div>
+                <div class="hero-img-text">Warm lights, wooden tables.</div>
+                <div class="hero-img-sub">Perfect for remote work, reading, or meeting friends.</div>
+              </div>
+              <div class="hero-img-tag">Free Wi-Fi · Power sockets</div>
+            </div>
+            <div class="hero-card-row">
+              <div class="hero-badges">
+                <span class="hero-badge-pill">Single-origin espresso</span>
+                <span class="hero-badge-pill">Freshly baked daily</span>
+              </div>
+              <span style="font-size:11px;color:var(--accent);">4.8 ★ on Local Maps</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- MENU -->
+    <section id="menu">
+      <h2 class="section-heading">Menu Highlights</h2>
+      <p class="section-sub">
+        A few favorites from our coffee bar and kitchen. Scan the QR on your table for the full menu.
+      </p>
+
+      <div class="menu-grid">
+        <!-- Coffee & Drinks -->
+        <div class="menu-column">
+          <h3 class="menu-title">Coffee & Drinks</h3>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Classic Cappuccino</span>
+              <span class="menu-item-desc">Rich espresso with silky foam.</span>
+            </div>
+            <span class="menu-item-price">₹180</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Caramel Iced Latte</span>
+              <span class="menu-item-desc">Cold brew, milk, and caramel drizzle.</span>
+            </div>
+            <span class="menu-item-price">₹220</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Mocha Hazelnut</span>
+              <span class="menu-item-desc">Chocolate, hazelnut, double shot espresso.</span>
+            </div>
+            <span class="menu-item-price">₹240</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Slow Brew Pour-over</span>
+              <span class="menu-item-desc">Single-origin beans, hand-poured.</span>
+            </div>
+            <span class="menu-item-price">₹260</span>
+          </div>
+        </div>
+
+        <!-- Bites & Pastries -->
+        <div class="menu-column">
+          <h3 class="menu-title">Bites & Pastries</h3>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Almond Croissant</span>
+              <span class="menu-item-desc">Flaky, buttery, filled with almond cream.</span>
+            </div>
+            <span class="menu-item-price">₹190</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Sourdough Grilled Cheese</span>
+              <span class="menu-item-desc">Melted cheese, herbs, toasted sourdough.</span>
+            </div>
+            <span class="menu-item-price">₹260</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Avocado Toast</span>
+              <span class="menu-item-desc">Smashed avo, lemon, chili flakes.</span>
+            </div>
+            <span class="menu-item-price">₹280</span>
+          </div>
+
+          <div class="menu-item">
+            <div class="menu-item-name">
+              <span>Warm Brownie & Ice Cream</span>
+              <span class="menu-item-desc">Soft center, vanilla scoop on top.</span>
+            </div>
+            <span class="menu-item-price">₹230</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="strip">
+        <span>Special:</span> Seasonal drinks & limited small plates change every month. Ask at the counter
+        or check the chalkboard for today’s picks.
+      </div>
+    </section>
+
+    <!-- LOCATION & HOURS -->
+    <section id="location">
+      <h2 class="section-heading">Find Us & Opening Hours</h2>
+      <p class="section-sub">
+        Right in the middle of the neighborhood – easy to reach by metro, bike, or a short walk.
+      </p>
+
+      <div class="info-grid">
+        <!-- Location -->
+        <div class="info-card">
+          <h3>Location</h3>
+          <p class="info-muted">
+            Brewside Café<br />
+            21 Sample Street, Your Area<br />
+            Your City, 000000
+          </p>
+          <p class="info-muted">
+            Landmark: Next to Central Park / Mall Name
+          </p>
+
+          <div class="map-placeholder">
+            <strong>Map preview</strong><br />
+            Drop your embedded Google Maps iframe here.<br />
+            Example: <span>Replace this box with &lt;iframe ...&gt;</span>
+          </div>
+        </div>
+
+        <!-- Hours & Contact -->
+        <div class="info-card">
+          <h3>Opening Hours</h3>
+          <ul class="hours-list">
+            <li><span>Mon – Thu</span><span>8:00 AM – 10:00 PM</span></li>
+            <li><span>Fri – Sat</span><span>8:00 AM – 11:00 PM</span></li>
+            <li><span>Sunday</span><span>9:00 AM – 9:00 PM</span></li>
+          </ul>
+
+          <div style="margin-top:10px;">
+            <p class="info-muted">
+              Phone / WhatsApp: <strong>+91-90000-00000</strong><br />
+              Email: <strong>hello@brewsidecafe.com</strong>
+            </p>
+            <p class="info-muted">
+              Dine-in · Takeaway · Delivery via your favorite apps.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA STRIP -->
+      <div id="order" class="cta-strip">
+        <div>
+          <div class="cta-text-main">Ready to order or reserve a table?</div>
+          <div class="cta-text-sub">
+            Order your regular in a few taps, or book a table for your next meetup.
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <a href="#" class="btn btn-primary">Order online</a>
+          <a href="#" class="btn btn-ghost">Book a table</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>© <span id="year"></span> Brewside Café. All rights reserved.</div>
+      <div class="footer-links">
+        <span>Made with ♥ by Your Name</span>
+        <a href="#">Instagram</a>
+        <a href="#">Google Maps</a>
+        <a href="#">Menu PDF</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
